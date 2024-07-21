@@ -1,0 +1,54 @@
+[{
+  "_id": {
+    "$oid": "6288b180708fabf8ab29ca11"
+  },
+  "name": "Adidas"
+},
+{
+  "_id": {
+    "$oid": "6288b174708fabf8ab29ca0d"
+  },
+  "name": "Jordan"
+},
+{
+  "_id": {
+    "$oid": "6288b180708fabf8ab29ca10"
+  },
+  "name": "MLB"
+},
+{
+  "_id": {
+    "$oid": "668a94f5c23f948ffdf46cf5"
+  },
+  "name": "PUMA"
+},
+{
+  "_id": {
+    "$oid": "668a94fac23f948ffdf46cf7"
+  },
+  "name": "Nike"
+},
+{
+  "_id": {
+    "$oid": "668ad46e64170dbe686043f4"
+  },
+  "name": "New Balance"
+},
+{
+  "_id": {
+    "$oid": "668ad5f864170dbe686043f9"
+  },
+  "name": "Vans"
+},
+{
+  "_id": {
+    "$oid": "668ad9afbe4308e0f6d4b9f1"
+  },
+  "name": "FILA"
+},
+{
+  "_id": {
+    "$oid": "668b92e315257e585fa080e5"
+  },
+  "name": "Converse"
+}]

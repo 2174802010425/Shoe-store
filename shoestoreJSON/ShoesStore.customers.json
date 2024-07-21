@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "66924a4ea25f7d8d2564b70f"
+  },
+  "username": "customer1",
+  "password": "12345",
+  "name": "hontran",
+  "phone": "03776382567",
+  "email": "tranannhhoanhondhi@gmail.com",
+  "active": 1,
+  "token": "b5228621e2765ab2f6ca48da2aa59a74"
+},
+{
+  "_id": {
+    "$oid": "669253118bfd488c248db7b5"
+  },
+  "username": "customer2",
+  "password": "123",
+  "name": "user1",
+  "phone": "12345678",
+  "email": "huyzed2003@gmail.com",
+  "active": 0,
+  "token": "f7307ec249affdc1953bb3cee7f08331"
+},
+{
+  "_id": {
+    "$oid": "669cb79974a2ce714f5156bc"
+  },
+  "username": "phuc1",
+  "password": "phuc1",
+  "name": "phuc",
+  "phone": "0909090909",
+  "email": "phuchoang2352@gmail.com",
+  "active": 0,
+  "token": "9cee945c6e0f53802d51cb454a6f7420"
+}]
