@@ -127,4 +127,27 @@ router.post('/signup', async function (req, res) {
     }
 });
 
+//resetpwd
+
+router.get('/sendmail/:email', async function (req,res) {
+    const email = req.params.email;
+    const dbCust = await CustomerDAO.selectByEmail(email);
+    if (!dbCust) {
+        res.json({ success: false, message: 'Not exist email' });
+    } else {
+        const send = await EmailUtil.send(email, dbCust._id, dbCust.token);
+        if (send) {
+            res.json({ success: true, message: 'Please check email' });
+        } else {
+            res.json({ success: false, message: 'Email failure' });
+        }
+    }
+});
+router.post('/resetpwd', async function (req, res) {
+    const _id = req.body.id;
+    const token = req.body.token;
+    const password = req.body.password;
+    const result = await CustomerDAO.resetpwd(_id, token, password);
+    res.json(result);
+});
 module.exports = router;
