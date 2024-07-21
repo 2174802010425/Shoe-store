@@ -2,9 +2,11 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import MyContext from '../contexts/MyContext';
 import withRouter from '../utils/withRouter';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   static contextType = MyContext; // using this.context to access global state
+
   constructor(props) {
     super(props);
     this.state = {
@@ -12,24 +14,45 @@ class Login extends Component {
       txtPassword: '12345'
     };
   }
+
   render() {
     return (
       <div className="align-center">
         <h2 className="text-center">ĐĂNG NHẬP</h2>
-        <form>
+        <form onSubmit={(e) => this.btnLoginClick(e)}>
           <table className="align-center">
             <tbody>
               <tr>
                 <td>Username</td>
-                <td><input type="text" value={this.state.txtUsername} onChange={(e) => { this.setState({ txtUsername: e.target.value }) }} /></td>
+                <td>
+                  <input
+                    type="text"
+                    value={this.state.txtUsername}
+                    onChange={(e) => { this.setState({ txtUsername: e.target.value }) }}
+                  />
+                </td>
               </tr>
               <tr>
                 <td>Password</td>
-                <td><input type="password" value={this.state.txtPassword} onChange={(e) => { this.setState({ txtPassword: e.target.value }) }} /></td>
+                <td>
+                  <input
+                    type="password"
+                    value={this.state.txtPassword}
+                    onChange={(e) => { this.setState({ txtPassword: e.target.value }) }}
+                  />
+                </td>
               </tr>
               <tr>
                 <td></td>
-                <td><input type="submit" value="LOGIN" onClick={(e) => this.btnLoginClick(e)} /></td>
+                <td>
+                  <input type="submit" value="LOGIN" />
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <Link to='/resetpwd'>Forgot password</Link>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -37,6 +60,7 @@ class Login extends Component {
       </div>
     );
   }
+
   // event-handlers login click
   btnLoginClick(e) {
     e.preventDefault();
@@ -49,18 +73,25 @@ class Login extends Component {
       alert('Please input username and password');
     }
   }
+
   // apis login 
   apiLogin(account) {
-    axios.post('/api/customer/login', account).then((res) => {
-      const result = res.data;
-      if (result.success === true) {
-        this.context.setToken(result.token);
-        this.context.setCustomer(result.customer);
-        this.props.navigate('/home');
-      } else {
-        alert(result.message);
-      }
-    });
+    axios.post('/api/customer/login', account)
+      .then((res) => {
+        const result = res.data;
+        if (result.success) {
+          this.context.setToken(result.token);
+          this.context.setCustomer(result.customer);
+          this.props.navigate('/home');
+        } else {
+          alert(result.message);
+        }
+      })
+      .catch((error) => {
+        console.error('Login error:', error);
+        alert('An error occurred while logging in.');
+      });
   }
 }
+
 export default withRouter(Login);

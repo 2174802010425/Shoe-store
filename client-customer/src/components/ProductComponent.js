@@ -24,6 +24,15 @@ class Product extends Component {
     return (
       <div className="text-center">
         <h2 className="text-center">LIST PRODUCTS</h2>
+        <div>
+          <select value={this.state.sort} onChange={(e) => { this.setState({ sort: e.target.value}); this.cmbSortChange(e.target.value); }}>
+            <option value="default">------Sort by------</option>
+            <option value="nameASC">Name (a &#8594; z)</option>
+            <option value="nameDESC">Name (z &#8594; a)</option>
+            <option value="priceASC">Price (low &#8594; high)</option>
+            <option value="priceDESC">Price (high &#8594; low)</option>
+          </select>
+        </div>
         {prods}
       </div>
     );
@@ -51,6 +60,19 @@ class Product extends Component {
       this.setState({ products: result });
     });
   }
+  // event-handlers
+  cmbSortChange(sort) {
+    if (sort === 'nameASC') {
+      this.state.products.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sort === 'nameDESC') {
+      this.state.products.sort((a, b) => b.name.localeCompare(a.name));
+    } else if (sort === 'priceASC') {
+      this.state.products.sort((a, b) => a.price - b.price);
+    } else if (sort === 'priceDESC') {
+      this.state.products.sort((a, b) => b.price - a.price);
+    }
+  }
+  
  // apis cid
   apiGetProductsByCatID(cid) {
     axios.get('/api/customer/products/category/' + cid).then((res) => {
