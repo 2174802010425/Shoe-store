@@ -70,6 +70,12 @@ router.post('/login', async function (req, res) {
     res.json({ success: false, message: 'Please input username and password' });
   }
 });
+// login
+router.get('/account', JwtUtil.checkToken, async function (req, res) {
+  const id = req.decoded. id;
+  const admin = await AdminDAO.selectByID(id);
+  res.json (admin);
+});
 router.get('/token', JwtUtil.checkToken, function (req, res) {
   const token = req.headers['x-access-token'] || req.headers['authorization'];
   const id = req.decoded.id;
@@ -121,9 +127,10 @@ router.post('/products', JwtUtil.checkToken, async function (req, res) {
   const price = req.body.price;
   const cid = req.body.category;
   const image = req.body.image;
+  const imageDetails = req.body.imageDetails;
   const now = new Date().getTime(); // milliseconds
   const category = await CategoryDAO.selectByID(cid);
-  const product = { name: name, price: price, image: image, cdate: now, category: category };
+  const product = { name: name, price: price, image: image, imageDetails: imageDetails, cdate: now, category: category };
   const result = await ProductDAO.insert(product);
   res.json(result);
 });
@@ -134,9 +141,10 @@ router.put('/products/:id', JwtUtil.checkToken, async function (req, res) {
   const price = req.body.price;
   const cid = req.body.category;
   const image = req.body.image;
+  const imageDetails = req.body.imageDetails;
   const now = new Date().getTime(); // milliseconds
   const category = await CategoryDAO.selectByID(cid);
-  const product = { _id: _id, name: name, price: price, image: image, cdate: now, category: category };
+  const product = { _id: _id, name: name, price: price, image: image, imageDetails: imageDetails, cdate: now, category: category };
   const result = await ProductDAO.update(product);
   res.json(result);
 });
@@ -146,4 +154,26 @@ router.delete('/products/:id', JwtUtil.checkToken, async function (req, res) {
   const result = await ProductDAO.delete(_id);
   res.json(result);
 });
+// statistica 
+router.get('/statistics', JwtUtil.checkToken, async function (req, res) { 
+  const noCategories = await CategoryDAO.selectByCount(); 
+  const noProducts = await ProductDAO.selectByCount(); 
+  const noOrders = await OrderDAO.selectByCount(); 
+  const noOrdersPending = await OrderDAO.selectByCountStatus ('PENDING');
+  const noOrdersApproved = await OrderDAO.selectByCountStatus ('APPROVED');
+  const noOrdersCanceled = await OrderDAO.selectByCountStatus ('CANCELED');
+  const noOrdersRevenue = await OrderDAO.sumTotalApproved ();
+  const noCustomers = await CustomerDAO.selectByCount();
+  res.json({ 
+    noCategories: noCategories, 
+    noProducts: noProducts,
+    noOrders: noOrders, 
+    noOrdersPending: noOrdersPending,
+    noOrdersApproved: noOrdersApproved, 
+    noOrdersCanceled: noOrdersCanceled, 
+    noOrdersRevenue: noOrdersRevenue, 
+    noCustomers: noCustomers 
+  });
+});
+
 module.exports = router;

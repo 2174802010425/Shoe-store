@@ -150,4 +150,10 @@ router.post('/resetpwd', async function (req, res) {
     const result = await CustomerDAO.resetpwd(_id, token, password);
     res.json(result);
 });
+//login.
+router.get('/account', JwtUtil.checkToken, async function (req, res) {
+    const id = req.decoded.id;
+    const customer = await CustomerDAO.selectByID(id);
+    res.json(customer);
+});
 module.exports = router;
