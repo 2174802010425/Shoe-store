@@ -115,6 +115,7 @@ input.keyword {
 .datatable {
   text-align: center;
   border-collapse: collapse;
+  border: 1px;
 }
 /* header */
 tr:first-child.datatable {
