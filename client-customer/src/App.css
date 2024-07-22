@@ -1,5 +1,6 @@
 /* styles.css */
 * {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -21,8 +22,25 @@ a:hover {
   height: fit-content;
   margin: 0px auto;
 }
+/* label-login */
+label{
+ color: #ffffff; 
+ font-size: 20px;
+}
+input{
+  font-size: 15px;
+  width: 180px;
+  height: 30px;
+}
+.resetuser{
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
 div.inline {
-  display: inline-block;
+  display: flex;
+  width: 320px;
 }
 figure.caption-right {
   display: flex;
@@ -39,33 +57,61 @@ figure.caption-right {
 }
 .align-center {
   display: flex;
+  text-align: center;
+  padding: 10px;
+  line-height: 3;
+  column-gap: 30px;
+}
+.align-center-login {
+  /* display: flex;
   flex-direction: column;
   gap: 15px;
   width: 360px;
   padding: 12px 16px;
   border: 1px solid #767676;
-  box-shadow: 2px 2px 2px rgba(0,0,0,0.05);
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.05); */
+  display: flex; 
+  box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .5);
+  border-radius: 20px;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(20px);
+  width: auto;
+  padding: 20px ;
+   
 }
+
 .form-container {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  padding: 8px 10px;
 }
+/* login */
 .login-btn {
   padding: 8px 12px;
   cursor: pointer;
   border: none;
   margin-top: 10px;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  font-size: 1.4rem;
 }
+.btn-login{
+  display: flex;
+  justify-content: center;
+}
+
 .login-btn:hover {
   background-color: red;
   color: #fff;
   transition: 0.5s ease;
 }
-.sign-up {
-  color: blue;
-  margin-left: 5px;
-}
+
 .align-valign-center {
   position: absolute;
   top: 50%;
@@ -84,6 +130,69 @@ figure.caption-right {
   text-align: center;
   margin-bottom: 10px;
   margin-top: 10px;
+}
+/* sign up style */
+.sign-up {
+  color: blue;
+  margin-left: 5px;
+}
+.sign-up-value{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.sign-up-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('./assets/bau_troi.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.sign-up-color{
+  color: #fff;
+  font-size: 20px;
+}
+.text-center-sign-up {
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color: #f5f5f5;
+}
+/* active */
+.active-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('./assets/Thế\ giới\ Pixel_\ \(13\).jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.active-value{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+/* home page */
+.home-container{
+  display: inline;
+  padding: 30px;
+  line-height: 30px;
+}
+.text-center-home{
+  display: block;
+  width: 1000px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.align-center-home-page{
+  display: flex;
+    justify-content: center;
+    padding: 30px;
+    margin: auto;
 }
 
 /* menu.css */
