@@ -26,7 +26,6 @@ class Login extends Component {
                   this.setState({ txtUsername: e.target.value });
                 }}
               />
-
               <label>Password</label>
               <input
                 type="password"
@@ -36,14 +35,14 @@ class Login extends Component {
                 }}
               />
 
-              <button
+              <div className='btn-login'>
+                <button
                 type="submit"
                 className="login-btn"
                 value="LOGIN"
                 onClick={(e) => this.btnLoginClick(e)}
-              >
-                Login
-              </button>
+              >Login </button>
+              </div>
             </form>
           </div>
         </div>
