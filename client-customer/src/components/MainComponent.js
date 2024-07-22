@@ -13,8 +13,11 @@ import Mycart from './MycartComponent';
 import Myorders from './MyordersComponent';
 import Gmap from './GmapComponent';
 import Resetpwd from './ResetpwdComponent';
+import axios from 'axios'; 
+import MyContext from '../contexts/MyContext';
 
 class Main extends Component {
+    static contextType = MyContext;
     render() {
         return (
             <div className="body-customer">
@@ -37,6 +40,19 @@ class Main extends Component {
                 </Routes>
             </div>
         );
+    }
+    componentDidMount() {  
+        const token = localStorage.getItem('customer_token'); 
+        if (token) this.apiGetAccount (token);
+    }
+    //apis
+    apiGetAccount (token) {
+        const config = {headers: { 'x-access-token': token} };
+        axios.get('/api/customer/account', config).then((res) => {
+            const result = res.data;
+            this.context.setToken (token);
+            this.context.setCustomer (result);
+        });
     }
 }
 

@@ -14,6 +14,7 @@ class Menu extends Component {
           <li className="menu"><Link to='/admin/product'>SẢN PHẦM</Link></li>
           <li className="menu"><Link to='/admin/order'>ĐƠN HÀNG</Link></li>
           <li className="menu"><Link to='/admin/customer'>NGƯỜI DÙNG</Link></li>
+          <li className="menu"><Link to='/admin/statistics'>STATISTICS</Link></li>
         </ul>
       </div>
       <div className="float-right">
@@ -22,7 +23,6 @@ class Menu extends Component {
           <a href="" onClick={() => this.lnkLogoutClick()}>Logout</a>
           <Link to='/admin/home' onClick={() => this.lnkLogoutClick()}>Logout</Link>
         </div>
-        
       </div>
     );
   }
@@ -30,6 +30,7 @@ class Menu extends Component {
   lnkLogoutClick() {
     this.context.setToken('');
     this.context.setUsername('');
+    localStorage.removeItem('admin_token');
   }
 }
 export default Menu;

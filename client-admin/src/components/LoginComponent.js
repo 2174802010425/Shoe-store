@@ -11,6 +11,10 @@ class Login extends Component {
       txtPassword: ''
     };
   }
+  compoentDidMount() {
+    const token = localStorage.getItem('admin_token');
+    if (token) this.apiGetAccount(token);
+  }
   render() {
     if (this.context.token === '') {
       return (
@@ -26,6 +30,7 @@ class Login extends Component {
                   this.setState({ txtUsername: e.target.value });
                 }}
               />
+
               <label>Password</label>
               <input
                 type="password"
@@ -35,14 +40,14 @@ class Login extends Component {
                 }}
               />
 
-              <div className='btn-login'>
-                <button
+              <button
                 type="submit"
                 className="login-btn"
                 value="LOGIN"
                 onClick={(e) => this.btnLoginClick(e)}
-              >Login </button>
-              </div>
+              >
+                Login
+              </button>
             </form>
           </div>
         </div>
@@ -69,9 +74,18 @@ class Login extends Component {
       if (result.success === true) {
         this.context.setToken(result.token);
         this.context.setUsername(account.username);
+        localStorage.setItem('admin_token', result.token);
       } else {
         alert(result.message);
       }
+    });
+  }
+  apiGetAccount (token) {
+    const config = { headers: { 'x-access-token': token} };
+    axios.get('/api/admin/account', config).then((res) => {
+      const result = res.data;
+      this.context.setToken (token);
+      this.context.setUsername (result.username);
     });
   }
 }

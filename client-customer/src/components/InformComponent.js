@@ -26,6 +26,7 @@ class Inform extends Component {
         this.context.setToken('');
         this.context.setCustomer(null);
         this.context.setMycart([]);
+        localStorage.removeItem('customer_token');
     }
 }
 export default Inform;

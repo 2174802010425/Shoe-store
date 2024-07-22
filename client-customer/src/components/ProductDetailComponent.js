@@ -9,7 +9,8 @@ class ProductDetail extends Component {
     super(props);
     this.state = {
       product: null,
-      txtQuantity: 1
+      txtQuantity: 1,
+      imgSelected: null
     };
   }
   render() {
@@ -19,7 +20,19 @@ class ProductDetail extends Component {
         <div className="align-center">
           <h2 className="text-center">PRODUCT DETAILS</h2>
           <figure className="caption-right">
-            <img src={"data:image/jpg;base64," + prod.image} width="400px" height="400px" alt="" />
+            <div>
+              {this.state.imgSelected == null ? (
+                <img src={"data:image/jpg;base64," + prod. image} width="400px" height="400px" alt=""/>
+              ) : (
+                <img src={"data:image/jpg;base64," + this.state.imgSelected} width="400px" height="400px" alt="" />
+              )}
+              <div className="align-center">
+                {prod.imageDetails.map ((image, index) => (
+                  <img key={index} src={"data:image/jpg;base64," + image} width="100px" height="100px" alt=""
+                    onClick={() => this.setState({ imgSelected: image })} />
+                ))}
+            </div>
+            </div>
             <figcaption>
               <form>
                 <table>

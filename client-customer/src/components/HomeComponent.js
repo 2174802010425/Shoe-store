@@ -44,11 +44,9 @@ class Home extends Component {
 
         return (
             <div className="home-container">
-                <div>
+                <div className="align-center">
                     <h2 className="text-center">NEW PRODUCTS</h2>
-                    <div className="align-center-home-page">
                     {newprods}
-                    </div>
                 </div>
                 {this.state.hotprods.length > 0 &&
                     <div className="align-center">
@@ -57,11 +55,8 @@ class Home extends Component {
                     </div>
                 }
             </div>
-
         );
-        
     }
-    
 
     componentDidMount() {
         this.apiGetNewProducts();
@@ -85,4 +80,3 @@ class Home extends Component {
 }
 
 export default Home;
-

@@ -17,36 +17,47 @@ class Login extends Component {
 
   render() {
     return (
-      <div className='login-container'>
-        <div className="align-center-login">
+      <div className="align-center">
         <h2 className="text-center">ĐĂNG NHẬP</h2>
-        <form className='form-container' onSubmit={(e) => this.btnLoginClick(e)}>
-          <label>Username</label>
-              <input
-                type="text"
-                value={this.state.txtUsername}
-                  onChange={(e) => { this.setState({ txtUsername: e.target.value }) }}
+        <form onSubmit={(e) => this.btnLoginClick(e)}>
+          <table className="align-center">
+            <tbody>
+              <tr>
+                <td>Username</td>
+                <td>
+                  <input
+                    type="text"
+                    value={this.state.txtUsername}
+                    onChange={(e) => { this.setState({ txtUsername: e.target.value }) }}
                   />
-              <label>Password</label>
+                </td>
+              </tr>
+              <tr>
+                <td>Password</td>
+                <td>
                   <input
                     type="password"
                     value={this.state.txtPassword}
                     onChange={(e) => { this.setState({ txtPassword: e.target.value }) }}
                   />
-              <div className='btn-login'>
-                  <button 
-                  className="login-btn"
-                  type="submit"
-                  value="LOGIN" >LOGIN
-                </button>  
-              </div>
-              <div className='resetuser'>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <input type="submit" value="LOGIN" />
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
                   <Link to='/resetpwd'>Forgot password</Link>
-              </div> 
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </form>
       </div>
-      </div>
-      
     );
   }
 
@@ -72,6 +83,7 @@ class Login extends Component {
           this.context.setToken(result.token);
           this.context.setCustomer(result.customer);
           this.props.navigate('/home');
+          localStorage.setItem('customer_token', result.token);
         } else {
           alert(result.message);
         }

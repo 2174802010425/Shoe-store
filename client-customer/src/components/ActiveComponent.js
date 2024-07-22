@@ -11,32 +11,26 @@ class Active extends Component {
   }
   render() {
     return (
-      <div className='active-container'>
-        <div className="align-center-login">
-          <h2 className="text-center-sign-up">ACTIVE ACCOUNT</h2>
-          <form className='active-value'>
-            <table className="align-center">
-              <tbody>
-                <tr>
-                  <td className="sign-up-color">ID</td>
-                  <td><input type="text" value={this.state.txtID} onChange={(e) => { this.setState({ txtID: e.target.value }) }} /></td>
-                </tr>
-                <tr>
-                  <td className="sign-up-color">Token</td>
-                  <td><input type="text" value={this.state.txtToken} onChange={(e) => { this.setState({ txtToken: e.target.value }) }} /></td>
-                </tr>
-                <div className='btn-login'>
-                  <button 
-                  className='login-btn'
-                  type="submit" 
-                  value="ACTIVE" 
-                  onClick={(e) => this.btnActiveClick(e)} >ACTIVE</button>
-                </div>
-
-              </tbody>
-            </table>
-          </form>
-        </div>
+      <div className="align-center">
+        <h2 className="text-center">ACTIVE ACCOUNT</h2>
+        <form>
+          <table className="align-center">
+            <tbody>
+              <tr>
+                <td>ID</td>
+                <td><input type="text" value={this.state.txtID} onChange={(e) => { this.setState({ txtID: e.target.value }) }} /></td>
+              </tr>
+              <tr>
+                <td>Token</td>
+                <td><input type="text" value={this.state.txtToken} onChange={(e) => { this.setState({ txtToken: e.target.value }) }} /></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><input type="submit" value="ACTIVE" onClick={(e) => this.btnActiveClick(e)} /></td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
       </div>
     );
   }
