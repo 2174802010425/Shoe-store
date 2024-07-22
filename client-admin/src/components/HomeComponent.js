@@ -5,8 +5,10 @@ class Home extends Component {
     return (
       <div className="align-center">
         <h2 className="text-center">ADMIN TRANG CHỦ</h2>
+       <div classname="img-contanner">
         <img src="https://img.upanh.tv/2024/07/22/LgnH.gif" 
         width="800px" height="600px" alt="" />
+          </div>
      
       </div>
     );
