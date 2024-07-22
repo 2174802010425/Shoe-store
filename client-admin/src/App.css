@@ -33,7 +33,7 @@ input {
 
   padding: 12px 20px;
 }
-.align-valign-centen.from-container{
+.align-valign-centen {
   display: flex;
   box-shadow: 0 0 30px rgba(0, 0, 0, .5);
   background: transparent;
