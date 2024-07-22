@@ -22,6 +22,7 @@ class Product extends Component {
       );
     });
     return (
+      
       <div className="text-center">
         <h2 className="text-center">LIST PRODUCTS</h2>
         <div>
@@ -33,7 +34,10 @@ class Product extends Component {
             <option value="priceDESC">Price (high &#8594; low)</option>
           </select>
         </div>
+        
+        <div className='align-center-home-page'>
         {prods}
+        </div>
       </div>
     );
   }

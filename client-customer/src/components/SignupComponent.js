@@ -14,38 +14,44 @@ class Signup extends Component {
   }
   render() {
     return (
-      <div className="align-center">
-        <h2 className="text-center">SIGN-UP</h2>
-        <form>
-          <table className="align-center">
-            <tbody>
-              <tr>
-                <td>Username</td>
-                <td><input type="text" value={this.state.txtUsername} onChange={(e) => { this.setState({ txtUsername: e.target.value }) }} /></td>
-              </tr>
-              <tr>
-                <td>Password</td>
-                <td><input type="password" value={this.state.txtPassword} onChange={(e) => { this.setState({ txtPassword: e.target.value }) }} /></td>
-              </tr>
-              <tr>
-                <td>Name</td>
-                <td><input type="text" value={this.state.txtName} onChange={(e) => { this.setState({ txtName: e.target.value }) }} /></td>
-              </tr>
-              <tr>
-                <td>Phone</td>
-                <td><input type="tel" value={this.state.txtPhone} onChange={(e) => { this.setState({ txtPhone: e.target.value }) }} /></td>
-              </tr>
-              <tr>
-                <td>Email</td>
-                <td><input type="email" value={this.state.txtEmail} onChange={(e) => { this.setState({ txtEmail: e.target.value }) }} /></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td><input type="submit" value="SIGN-UP" onClick={(e) => this.btnSignupClick(e)} /></td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
+      <div className='sign-up-container'>
+        <div className="align-center-login">
+          <h2 className="text-center-sign-up">ĐĂNG KÝ</h2>
+          <form className='sign-up-value'>
+            <table className="align-center">
+              <tbody>
+                <tr>
+                  <td className="sign-up-color" >Username</td>
+                  <td><input type="text" value={this.state.txtUsername} onChange={(e) => { this.setState({ txtUsername: e.target.value }) }} /></td>
+                </tr>
+                <tr>
+                  <td className="sign-up-color">Password</td>
+                  <td><input type="password" value={this.state.txtPassword} onChange={(e) => { this.setState({ txtPassword: e.target.value }) }} /></td>
+                </tr>
+                <tr>
+                  <td className="sign-up-color">Name</td>
+                  <td><input type="text" value={this.state.txtName} onChange={(e) => { this.setState({ txtName: e.target.value }) }} /></td>
+                </tr>
+                <tr>
+                  <td className="sign-up-color">Phone</td>
+                  <td><input type="tel" value={this.state.txtPhone} onChange={(e) => { this.setState({ txtPhone: e.target.value }) }} /></td>
+                </tr>
+                <tr>
+                  <td className="sign-up-color">Email</td>
+                  <td><input type="email" value={this.state.txtEmail} onChange={(e) => { this.setState({ txtEmail: e.target.value }) }} /></td>
+                </tr>
+                <div className='btn-login'>
+                  <button 
+                  className='login-btn'
+                  type="submit" 
+                  value="SIGN-UP" 
+                  onClick={(e) => this.btnSignupClick(e)}>ĐĂNG KÝ</button>
+                </div>
+                
+              </tbody>
+            </table>
+          </form>
+        </div>
       </div>
     );
   }
