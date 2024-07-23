@@ -17,56 +17,58 @@ class ProductDetail extends Component {
     const prod = this.state.product;
     if (prod != null) {
       return (
-        <div className="align-center">
-          <h2 className="text-center">PRODUCT DETAILS</h2>
-          <figure className="caption-right">
-            <div>
-              {this.state.imgSelected == null ? (
-                <img src={"data:image/jpg;base64," + prod. image} width="400px" height="400px" alt=""/>
-              ) : (
-                <img src={"data:image/jpg;base64," + this.state.imgSelected} width="400px" height="400px" alt="" />
-              )}
-              <div className="align-center">
-                {prod.imageDetails.map ((image, index) => (
-                  <img key={index} src={"data:image/jpg;base64," + image} width="100px" height="100px" alt=""
-                    onClick={() => this.setState({ imgSelected: image })} />
-                ))}
-            </div>
-            </div>
-            <figcaption>
-              <form>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td align="right">ID:</td>
-                      <td>{prod._id}</td>
-                    </tr>
-                    <tr>
-                      <td align="right">Name:</td>
-                      <td>{prod.name}</td>
-                    </tr>
-                    <tr>
-                      <td align="right">Price:</td>
-                      <td>{prod.price}</td>
-                    </tr>
-                    <tr>
-                      <td align="right">Category:</td>
-                      <td>{prod.category.name}</td>
-                    </tr>
-                    <tr>
-                      <td align="right">Quantity:</td>
-                      <td><input type="number" min="1" max="99" value={this.state.txtQuantity} onChange={(e) => { this.setState({ txtQuantity: e.target.value }) }} /></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td><input type="submit" value="ADD TO CART" onClick={(e) => this.btnAdd2CartClick(e)} /></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </form>
-            </figcaption>
-          </figure>
-        </div>
+        <div className='sign-up-container'>
+          <div className="align-center-login">
+            <h2 className="text-center">PRODUCT DETAILS</h2>
+            <figure className="caption-right">
+              <div>
+                {this.state.imgSelected == null ? (
+                  <img src={"data:image/jpg;base64," + prod. image} width="400px" height="400px" alt=""/>
+                ) : (
+                  <img src={"data:image/jpg;base64," + this.state.imgSelected} width="400px" height="400px" alt="" />
+                )}
+                <div className="align-center">
+                  {prod.imageDetails.map ((image, index) => (
+                    <img key={index} src={"data:image/jpg;base64," + image} width="100px" height="100px" alt=""
+                      onClick={() => this.setState({ imgSelected: image })} />
+                  ))}
+              </div>
+              </div>
+              <figcaption>
+                <form>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td align="right">ID:</td>
+                        <td>{prod._id}</td>
+                      </tr>
+                      <tr>
+                        <td align="right">Name:</td>
+                        <td>{prod.name}</td>
+                      </tr>
+                      <tr>
+                        <td align="right">Price:</td>
+                        <td>{prod.price}</td>
+                      </tr>
+                      <tr>
+                        <td align="right">Category:</td>
+                        <td>{prod.category.name}</td>
+                      </tr>
+                      <tr>
+                        <td align="right">Quantity:</td>
+                        <td><input type="number" min="1" max="99" value={this.state.txtQuantity} onChange={(e) => { this.setState({ txtQuantity: e.target.value }) }} /></td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><input type="submit" value="ADD TO CART" onClick={(e) => this.btnAdd2CartClick(e)} /></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </form>
+              </figcaption>
+            </figure>
+          </div>
+     </div>
       );
     }
     return (<div />);
