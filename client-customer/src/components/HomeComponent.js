@@ -43,10 +43,12 @@ class Home extends Component {
         });
 
         return (
-            <div className="home-container">
-                <div className="align-center">
+             <div className="home-container">
+                <div>
                     <h2 className="text-center">NEW PRODUCTS</h2>
+                    <div className="align-center-home-page">
                     {newprods}
+                    </div>
                 </div>
                 {this.state.hotprods.length > 0 &&
                     <div className="align-center">
