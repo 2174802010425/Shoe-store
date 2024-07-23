@@ -67,7 +67,7 @@ class Login extends Component {
     axios.post('/api/customer/login', account)
       .then((res) => {
         const result = res.data;
-        if (result.success) {
+        if (result.success == true ) {
           this.context.setToken(result.token);
           this.context.setCustomer(result.customer);
           this.props.navigate('/home');
