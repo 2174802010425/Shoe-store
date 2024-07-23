@@ -67,11 +67,11 @@ class Login extends Component {
     axios.post('/api/customer/login', account)
       .then((res) => {
         const result = res.data;
-        if (result.success == true ) {
+        if (result.success == ) {
           this.context.setToken(result.token);
           this.context.setCustomer(result.customer);
           this.props.navigate('/home');
-          localStorage.setItem('customer_token', result.token);
+          ///localStorage.setItem('customer_token', result.token);
         } else {
           alert(result.message);
         }
